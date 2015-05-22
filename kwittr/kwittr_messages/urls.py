@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
-from kvittr_messages import views
+from kwittr_messages import views
 
 
 urlpatterns = patterns('',
