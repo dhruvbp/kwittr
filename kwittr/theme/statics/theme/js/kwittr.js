@@ -1,33 +1,19 @@
-
 $(document).ready(function(){
 
-    $(".add-points-link").click(function(event) {
+    $(".message_add_likes").click(function(event) {
+        console.log("i funksjonen message_add_likes");
         event.preventDefault();
-        var note_id = $(this).data("noteid");
+        var message_id = $(this).data("message_id");
+        console.log(message_id);
         $.ajax({
-            url: $('#add_points_url').val() + "/" + note_id
+            url: '/messages/message_add_likes/' + message_id
         })
         .done(function(data){
-            var points_updated = data['points_updated'];
-            var points_element_id = "#id-points-for-note-" + note_id;
-            $(points_element_id).html(points_updated);
+            console.log("done");
+            var likes_updated = data['likes_updated'];
+            console.log(data);
+            //var message_add_likes = "#id-points-for-message-" + message_id;
+            $(message_add_likes).html('likes_updated');
+           
         });
     });
-
-    $("#increase_passed_exams_button").click(function(event) {
-        event.preventDefault();
-        $.ajax({
-            url: $('#passed_exams_url').val()
-        })
-        .done(function(data){
-            var passed_exams_updated = data['passed_exams_updated'];
-            $("#passed_exams_cell").html(passed_exams_updated);
-        });
-    });
-
-
-
-
-
-
-});

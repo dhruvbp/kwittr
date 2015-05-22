@@ -7,8 +7,8 @@ urlpatterns = patterns('',
     url(r'^(\d+)/$', views.message_details, name='message_details'),
    # url(r'^(\d+)/increase_message_likes$', views.message_likes, 
         #name='add_message_likes'),   
-    #url(r'^message_add_likes/(\d+)$', views.message_add_likes, 
-        #name='message.likes'),  
+    url(r'^message_add_likes/(\d+)$', views.message_add_likes, 
+        name='message.likes'),  
      
 )
 
