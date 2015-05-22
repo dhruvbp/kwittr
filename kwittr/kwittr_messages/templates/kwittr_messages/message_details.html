@@ -1,0 +1,38 @@
+    {% extends 'theme/base.html' %}
+    {% block subheader %}Message details{% endblock %}
+    {% block pagecontent %}
+
+        <div class="row">
+            <div class="col-sm-12">
+
+                <h2>Details on message {{ message.id }}</h2> 
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Message</th>
+                            <th>Time</th>
+                            <th>Created</th>
+                            <th>Likes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ message.id }}</td>
+                            <td>{{ message.message }}</td>
+                            <td>{{ message.created_datetime }}</td>
+                            <td>{{ message.created_by }}</td>
+                            <td>{{ message.likes }}</td>
+                                
+                            </a>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        
+    
+    {% endblock %}
+

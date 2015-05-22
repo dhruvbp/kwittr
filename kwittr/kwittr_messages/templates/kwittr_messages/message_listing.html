@@ -1,0 +1,77 @@
+
+{% extends 'theme/base.html' %}
+{% block student_listing_is_active %}active{% endblock%}
+{% block subheader %}Message listing{% endblock %}
+{% block pagecontent %}
+
+    {% if user.is_anonymous %}
+    <div class="alert alert-danger" role="alert">
+        <p>You must sing in to add messages</p>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>New message</h3> 
+            <form class="form-horizontal" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="col-sm-12">
+                       <textarea class="form-control" rows="3" name="new_message"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-default">Save message</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+    {{ block.super }}
+        <ul>
+        {% for message in messages %}
+            <li>
+                {{ message.message }}
+                <a href="{% url 'message_details' message.id %}">Detaljer</a>
+                <a data-message_id="{{ message.id }}" class="message_add_likes" class="btn btn-default" href="#" role="button">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
+                Like
+            </a>
+                 <p id="id-points-for-message-"> {{ message.likes }} </p>
+
+            </li>
+        {% endfor %}
+    </ul>
+
+    <nav>
+        <ul class="pager">
+            {% if messages.has_previous %}
+            <li class="previous">
+                <a href="?page={{ messages.previous_page_number }}">
+                    <span aria-hidden="true">&larr;</span> Previous
+                </a>
+            </li>
+            {% endif %}
+            <li>
+                <span class="current">
+                    Page {{ messages.number }} of {{ messages.paginator.num_pages }}
+                </span>
+            </li>
+            {% if messages.has_next %}
+                <li class="next">
+                    <a href="?page={{ messages.next_page_number }}">
+                        Next <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>    
+    
+   <input type="hidden" id="message_add_likes" 
+          value="/likes/{{ message.id }}/message_add_likes">
+   <input type="hidden" id="add_points_url" 
+          value="/likes/{{ message.id }}/add_points">
+
+{% endblock %}
