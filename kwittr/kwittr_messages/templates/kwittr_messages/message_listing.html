@@ -1,8 +1,7 @@
 {% extends 'theme/base.html' %}
-{% block student_listing_is_active %}active{% endblock%}
+{% block message_listing_is_active %}active{% endblock%}
 {% block subheader %}Message listing{% endblock %}
 {% block pagecontent %}
-
     {% if user.is_anonymous %}
     <div class="alert alert-danger" role="alert">
         <p>You must sing in to add messages</p>
@@ -27,23 +26,21 @@
         </div>
     </div>
     {% endif %}
-
     {{ block.super }}
         <ul>
         {% for message in messages %}
             <li>
                 {{ message.message }}
                 <a href="{% url 'message_details' message.id %}">Detaljer</a>
-                <a data-message_id="{{ message.id }}" class="message_add_likes" class="btn btn-default" href="#" role="button">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
-                Like
-            </a>
-                 <p id="id-points-for-message-"> {{ message.likes }} </p>
-
+                <button data-message_id="{{ message.id }}" class="message_add_likes" type ="submit" class="btn btn-default"
+                >Like</button>
+                 <p id="id-points-for-message-{{ message.likes }}"> {{ message.likes }} </p>
+                
             </li>
+
+           
         {% endfor %}
     </ul>
-
     <nav>
         <ul class="pager">
             {% if messages.has_previous %}
@@ -72,5 +69,4 @@
           value="/likes/{{ message.id }}/message_add_likes">
    <input type="hidden" id="add_points_url" 
           value="/likes/{{ message.id }}/add_points">
-
 {% endblock %}
