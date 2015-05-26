@@ -25,6 +25,7 @@ SECRET_KEY = ')owqc5($y^c4n-hpowfjx_cs=s*w%nu)43(=nt=t1nq8!&(jax'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
 
