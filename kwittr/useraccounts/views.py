@@ -35,3 +35,8 @@ def user_register(request):
         user.save()
         context['user_saved_successfully'] = True
     return render(request, 'useraccounts/register.html', context)
+
+
+
+
+
