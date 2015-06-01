@@ -34,8 +34,8 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }} <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Account</a></li>
-                    <li class="divider"></li>
+                  <li><a href="{% url 'user_profile'%}">Edit profile</a></li>                    
+                  <li class="divider"></li>
                     <li><a href="{% url 'user_logout' %}">Logout</a></li>
                   </ul>
                 </li>
@@ -45,10 +45,10 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-    <!--<div class="container">
+    <div class="container">
         <div class="page-header">
-            <h1>Welcome to kwittr<small>{% block subheader %}{% endblock %}</small></h1>
-        </div> -->
+            <h1>Welcome to kwittr</h1>
+        </div> 
 
         {% block pagecontent %}
 
