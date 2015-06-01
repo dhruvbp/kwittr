@@ -2,6 +2,16 @@
     {% block subheader %}Message details{% endblock %}
     {% block pagecontent %}
 
+<head> 
+    <meta property="og:title" content="Ny Kwittr-melding!" />
+    <meta property="og:type" content="Website" />
+    <meta property="og:site_name" content="kwittr.no" />
+    <meta property="og:description" content="This is a website where you can create an account, log in, edit your profile, and post messages !" />
+    <meta property="og:url" content="url=http://{{ request.get_host }}{{ request.get_full_path }}" />
+    <meta property="og:image" content="http://kwittr.no/images/kwittr.png" />
+    <meta property="og:image:secure_url" content="http://kwittr.no/images/kwittr.png" />
+</head>
+
         <div class="row">
             <div class="col-sm-12">
 
