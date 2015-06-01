@@ -1,8 +1,54 @@
 {% extends 'useraccounts/base.html' %}
-{% block container %} 
+{% block container %}
+<nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'frontpage' %}">Startsiden</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="{% block message_listing_is_active %}{% endblock%}">
+              <a href="{% url 'message_listing' %}">Message list</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if user.is_anonymous %}
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="{% url 'user_login' %}">Sign in</a></li>
+                  </ul>
+                </li>
+            {% else %}
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }} <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Edit profile</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{% url 'user_logout' %}">Logout</a></li>
+
+                  </ul>
+                </li>
+            {% endif %}
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
 <h1>Register new User</h1>
-{% if username_allready_exist %}
+{% if username_already_exist %}
     <div class="alert alert-danger" role="alert">Username already in use</div>
+{% elif email_already_exist %}
+<div class="alert alert-danger" role="alert">Email already exist</div>    
 {% elif user_saved_successfully %}
 <div class="alert alert-success">User successfully created</div>
 {% endif %}
@@ -27,6 +73,11 @@
             <label for="inputPassword">Password</label>
             <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password">
         </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+  <button type="submit" class="btn btn-default">Submit</button>
+  
 </form>
+<br>
+<button class="btn btn-default">
+      <a href="{% url 'user_login' %}">Log in</a>
+  </button>
 {% endblock %}
