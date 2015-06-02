@@ -1,7 +1,7 @@
 # kwittr
 Eksamens oppgave ITM2015
-
 - Gruppen har 2 medlemmer .
+
 - Dhruv Patel
 - Lars Wilhelm Thorgersen
 
