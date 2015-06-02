@@ -3,7 +3,7 @@ Eksamens oppgave ITM2015
 - Gruppen har 2 medlemmer .
 
 - Dhruv Patel
-- Lars Wilhelm Thorgersen
+- Lars Wilhelm Torgersen
 
 
 - Dette er en hjemmeeksamen som gikk ut på a lage det samme som twitter. Vi kalte første versjon for kvittr, men vi var ikke fornøyd og dermed lagde vi ny versjon som ble kalt kwitter med w siden kvittr navnet allerede var i bruk.
