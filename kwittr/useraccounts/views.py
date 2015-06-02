@@ -25,6 +25,7 @@ def user_logout(request):
     logout(request)
     return redirect('frontpage')
 
+"""Vi har lagt inn if for at den skal sjekke om brukernavn/email alerede existerer"""
 def user_register(request):
     context = {}
     if request.method == "POST":
@@ -47,7 +48,7 @@ def user_register(request):
         context['user_saved_successfully'] = True
     return render(request, 'useraccounts/register.html', context)
 
-
+"""Brukeren må være logget inn for at man skal få lov til å endre profilen"""
 @login_required
 def user_profile(request):
     context = {}
